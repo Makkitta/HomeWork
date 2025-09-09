@@ -39,8 +39,6 @@ def driver():
     yield driver
     driver.quit()
 
-
-# ----------------------------------------------------------------------------------------------------------------------#
 # 1.Присутствуют все питомцы.
 def test_check_pets_users(driver):
     # Явное ожидание для статистики
@@ -59,7 +57,6 @@ def test_check_pets_users(driver):
     assert pets_number == len(rows_pets), f"Ожидалось {pets_number} питомцев, найдено {len(rows_pets)}"
 
 
-# ----------------------------------------------------------------------------------------------------------------------#
 # 2.Хотя бы у половины питомцев есть фото.
 def test_photos_of_users_pets(driver):
     # Явное ожидание для изображений
@@ -75,8 +72,6 @@ def test_photos_of_users_pets(driver):
     # Проверка: хотя бы у половины питомцев есть фото
     assert photo >= len(images) / 2, f"Фото есть только у {photo} из {len(images)} питомцев"
 
-
-# ----------------------------------------------------------------------------------------------------------------------#
 # 3.У всех питомцев есть имя, возраст и порода.
 def test_name_age_breed(driver):
     # Явное ожидание для строк таблицы
@@ -102,7 +97,6 @@ def test_name_age_breed(driver):
     assert len(names) == len(rows_pets) and len(breeds) == len(rows_pets) and len(ages) == len(rows_pets)
 
 
-# ----------------------------------------------------------------------------------------------------------------------#
 # 4.У всех питомцев разные имена.
 def test_names_pets(driver):
     # Явное ожидание для имен
@@ -115,7 +109,6 @@ def test_names_pets(driver):
     assert len(names) == len(set(names)), f"Есть повторяющиеся имена: {[n for n in names if names.count(n) > 1]}"
 
 
-# ----------------------------------------------------------------------------------------------------------------------#
 # 5.В списке нет повторяющихся питомцев.
 def test_duplicates_pets(driver):
     # Явное ожидание для строк таблицы
@@ -133,5 +126,6 @@ def test_duplicates_pets(driver):
                 pets_data.append(pet_info)
 
     assert len(pets_data) == len(set(pets_data)), "Есть повторяющиеся карточки питомцев!"
+
 
 # python -m pytest test_petfriends_30_3_1.py -v
